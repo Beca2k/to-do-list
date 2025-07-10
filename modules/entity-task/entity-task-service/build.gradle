@@ -1,0 +1,12 @@
+dependencies {
+	api project(":modules:entity-task:entity-task-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../entity-task-api/src/main/java"
+	testDir = "../entity-task-test/src/testIntegration/java"
+}
+
+group = "com.rebeca.todolist.entity"

@@ -1,0 +1,10 @@
+Bundle-Name: entity-task-api
+Bundle-SymbolicName: com.rebeca.todolist.entity.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.rebeca.todolist.entity.exception,\
+	com.rebeca.todolist.entity.model,\
+	com.rebeca.todolist.entity.service,\
+	com.rebeca.todolist.entity.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../entity-task-service/service.xml
