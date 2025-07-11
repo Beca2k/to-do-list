@@ -138,7 +138,9 @@ public class TaskPersistenceTest {
 
 		newTask.setPath(RandomTestUtil.randomString());
 
-		newTask.setRelativeId(RandomTestUtil.nextInt());
+		newTask.setRelativeId(RandomTestUtil.nextLong());
+
+		newTask.setFileEntryId(RandomTestUtil.nextLong());
 
 		_tasks.add(_persistence.update(newTask));
 
@@ -165,6 +167,8 @@ public class TaskPersistenceTest {
 		Assert.assertEquals(existingTask.getPath(), newTask.getPath());
 		Assert.assertEquals(
 			existingTask.getRelativeId(), newTask.getRelativeId());
+		Assert.assertEquals(
+			existingTask.getFileEntryId(), newTask.getFileEntryId());
 	}
 
 	@Test
@@ -195,11 +199,29 @@ public class TaskPersistenceTest {
 	}
 
 	@Test
-	public void testCountByStatusAndGroupId() throws Exception {
-		_persistence.countByStatusAndGroupId(
-			RandomTestUtil.nextInt(), RandomTestUtil.nextLong());
+	public void testCountByUserIdAndGroupId() throws Exception {
+		_persistence.countByUserIdAndGroupId(
+			RandomTestUtil.nextLong(), RandomTestUtil.nextLong());
 
-		_persistence.countByStatusAndGroupId(0, 0L);
+		_persistence.countByUserIdAndGroupId(0L, 0L);
+	}
+
+	@Test
+	public void testCountByUserIdAndGroupIdAndRelativeId() throws Exception {
+		_persistence.countByUserIdAndGroupIdAndRelativeId(
+			RandomTestUtil.nextLong(), RandomTestUtil.nextLong(),
+			RandomTestUtil.nextLong());
+
+		_persistence.countByUserIdAndGroupIdAndRelativeId(0L, 0L, 0L);
+	}
+
+	@Test
+	public void testCountByUserIdAndGroupIdAndStatus() throws Exception {
+		_persistence.countByUserIdAndGroupIdAndStatus(
+			RandomTestUtil.nextLong(), RandomTestUtil.nextLong(),
+			RandomTestUtil.nextInt());
+
+		_persistence.countByUserIdAndGroupIdAndStatus(0L, 0L, 0);
 	}
 
 	@Test
@@ -230,7 +252,8 @@ public class TaskPersistenceTest {
 			"ToDoList_Task", "uuid", true, "taskId", true, "groupId", true,
 			"companyId", true, "userId", true, "userName", true, "createDate",
 			true, "modifiedDate", true, "status", true, "description", true,
-			"title", true, "path", true, "relativeId", true);
+			"title", true, "path", true, "relativeId", true, "fileEntryId",
+			true);
 	}
 
 	@Test
@@ -519,7 +542,9 @@ public class TaskPersistenceTest {
 
 		task.setPath(RandomTestUtil.randomString());
 
-		task.setRelativeId(RandomTestUtil.nextInt());
+		task.setRelativeId(RandomTestUtil.nextLong());
+
+		task.setFileEntryId(RandomTestUtil.nextLong());
 
 		_tasks.add(_persistence.update(task));
 

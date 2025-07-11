@@ -514,66 +514,66 @@ public class TaskUtil {
 	}
 
 	/**
-	 * Returns all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns all the tasks where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @return the matching tasks
 	 */
-	public static List<Task> findByStatusAndGroupId(int status, long groupId) {
-		return getPersistence().findByStatusAndGroupId(status, groupId);
+	public static List<Task> findByUserIdAndGroupId(long userId, long groupId) {
+		return getPersistence().findByUserIdAndGroupId(userId, groupId);
 	}
 
 	/**
-	 * Returns a range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
 	 * @return the range of matching tasks
 	 */
-	public static List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end) {
+	public static List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end) {
 
-		return getPersistence().findByStatusAndGroupId(
-			status, groupId, start, end);
+		return getPersistence().findByUserIdAndGroupId(
+			userId, groupId, start, end);
 	}
 
 	/**
-	 * Returns an ordered range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching tasks
 	 */
-	public static List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end,
+	public static List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end,
 		OrderByComparator<Task> orderByComparator) {
 
-		return getPersistence().findByStatusAndGroupId(
-			status, groupId, start, end, orderByComparator);
+		return getPersistence().findByUserIdAndGroupId(
+			userId, groupId, start, end, orderByComparator);
 	}
 
 	/**
-	 * Returns an ordered range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
@@ -581,116 +581,528 @@ public class TaskUtil {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching tasks
 	 */
-	public static List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end,
+	public static List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end,
 		OrderByComparator<Task> orderByComparator, boolean useFinderCache) {
 
-		return getPersistence().findByStatusAndGroupId(
-			status, groupId, start, end, orderByComparator, useFinderCache);
+		return getPersistence().findByUserIdAndGroupId(
+			userId, groupId, start, end, orderByComparator, useFinderCache);
 	}
 
 	/**
-	 * Returns the first task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching task
 	 * @throws NoSuchTaskException if a matching task could not be found
 	 */
-	public static Task findByStatusAndGroupId_First(
-			int status, long groupId, OrderByComparator<Task> orderByComparator)
+	public static Task findByUserIdAndGroupId_First(
+			long userId, long groupId,
+			OrderByComparator<Task> orderByComparator)
 		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
 
-		return getPersistence().findByStatusAndGroupId_First(
-			status, groupId, orderByComparator);
+		return getPersistence().findByUserIdAndGroupId_First(
+			userId, groupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the first task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching task, or <code>null</code> if a matching task could not be found
 	 */
-	public static Task fetchByStatusAndGroupId_First(
-		int status, long groupId, OrderByComparator<Task> orderByComparator) {
+	public static Task fetchByUserIdAndGroupId_First(
+		long userId, long groupId, OrderByComparator<Task> orderByComparator) {
 
-		return getPersistence().fetchByStatusAndGroupId_First(
-			status, groupId, orderByComparator);
+		return getPersistence().fetchByUserIdAndGroupId_First(
+			userId, groupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching task
 	 * @throws NoSuchTaskException if a matching task could not be found
 	 */
-	public static Task findByStatusAndGroupId_Last(
-			int status, long groupId, OrderByComparator<Task> orderByComparator)
+	public static Task findByUserIdAndGroupId_Last(
+			long userId, long groupId,
+			OrderByComparator<Task> orderByComparator)
 		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
 
-		return getPersistence().findByStatusAndGroupId_Last(
-			status, groupId, orderByComparator);
+		return getPersistence().findByUserIdAndGroupId_Last(
+			userId, groupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the last task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching task, or <code>null</code> if a matching task could not be found
 	 */
-	public static Task fetchByStatusAndGroupId_Last(
-		int status, long groupId, OrderByComparator<Task> orderByComparator) {
+	public static Task fetchByUserIdAndGroupId_Last(
+		long userId, long groupId, OrderByComparator<Task> orderByComparator) {
 
-		return getPersistence().fetchByStatusAndGroupId_Last(
-			status, groupId, orderByComparator);
+		return getPersistence().fetchByUserIdAndGroupId_Last(
+			userId, groupId, orderByComparator);
 	}
 
 	/**
-	 * Returns the tasks before and after the current task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
 	 * @param taskId the primary key of the current task
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next task
 	 * @throws NoSuchTaskException if a task with the primary key could not be found
 	 */
-	public static Task[] findByStatusAndGroupId_PrevAndNext(
-			long taskId, int status, long groupId,
+	public static Task[] findByUserIdAndGroupId_PrevAndNext(
+			long taskId, long userId, long groupId,
 			OrderByComparator<Task> orderByComparator)
 		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
 
-		return getPersistence().findByStatusAndGroupId_PrevAndNext(
-			taskId, status, groupId, orderByComparator);
+		return getPersistence().findByUserIdAndGroupId_PrevAndNext(
+			taskId, userId, groupId, orderByComparator);
 	}
 
 	/**
-	 * Removes all the tasks where status = &#63; and groupId = &#63; from the database.
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; from the database.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 */
-	public static void removeByStatusAndGroupId(int status, long groupId) {
-		getPersistence().removeByStatusAndGroupId(status, groupId);
+	public static void removeByUserIdAndGroupId(long userId, long groupId) {
+		getPersistence().removeByUserIdAndGroupId(userId, groupId);
 	}
 
 	/**
-	 * Returns the number of tasks where status = &#63; and groupId = &#63;.
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @return the number of matching tasks
 	 */
-	public static int countByStatusAndGroupId(int status, long groupId) {
-		return getPersistence().countByStatusAndGroupId(status, groupId);
+	public static int countByUserIdAndGroupId(long userId, long groupId) {
+		return getPersistence().countByUserIdAndGroupId(userId, groupId);
+	}
+
+	/**
+	 * Returns all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @return the matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId) {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+	}
+
+	/**
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @return the range of matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end) {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end,
+		OrderByComparator<Task> orderByComparator) {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end,
+		OrderByComparator<Task> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public static Task findByUserIdAndGroupIdAndRelativeId_First(
+			long userId, long groupId, long relativeId,
+			OrderByComparator<Task> orderByComparator)
+		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId_First(
+			userId, groupId, relativeId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public static Task fetchByUserIdAndGroupIdAndRelativeId_First(
+		long userId, long groupId, long relativeId,
+		OrderByComparator<Task> orderByComparator) {
+
+		return getPersistence().fetchByUserIdAndGroupIdAndRelativeId_First(
+			userId, groupId, relativeId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public static Task findByUserIdAndGroupIdAndRelativeId_Last(
+			long userId, long groupId, long relativeId,
+			OrderByComparator<Task> orderByComparator)
+		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId_Last(
+			userId, groupId, relativeId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public static Task fetchByUserIdAndGroupIdAndRelativeId_Last(
+		long userId, long groupId, long relativeId,
+		OrderByComparator<Task> orderByComparator) {
+
+		return getPersistence().fetchByUserIdAndGroupIdAndRelativeId_Last(
+			userId, groupId, relativeId, orderByComparator);
+	}
+
+	/**
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param taskId the primary key of the current task
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next task
+	 * @throws NoSuchTaskException if a task with the primary key could not be found
+	 */
+	public static Task[] findByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+			long taskId, long userId, long groupId, long relativeId,
+			OrderByComparator<Task> orderByComparator)
+		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
+
+		return getPersistence().findByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+			taskId, userId, groupId, relativeId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 */
+	public static void removeByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId) {
+
+		getPersistence().removeByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+	}
+
+	/**
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @return the number of matching tasks
+	 */
+	public static int countByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId) {
+
+		return getPersistence().countByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+	}
+
+	/**
+	 * Returns all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status);
+	}
+
+	/**
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @return the range of matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end) {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end,
+		OrderByComparator<Task> orderByComparator) {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tasks
+	 */
+	public static List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end,
+		OrderByComparator<Task> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public static Task findByUserIdAndGroupIdAndStatus_First(
+			long userId, long groupId, int status,
+			OrderByComparator<Task> orderByComparator)
+		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus_First(
+			userId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public static Task fetchByUserIdAndGroupIdAndStatus_First(
+		long userId, long groupId, int status,
+		OrderByComparator<Task> orderByComparator) {
+
+		return getPersistence().fetchByUserIdAndGroupIdAndStatus_First(
+			userId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public static Task findByUserIdAndGroupIdAndStatus_Last(
+			long userId, long groupId, int status,
+			OrderByComparator<Task> orderByComparator)
+		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus_Last(
+			userId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public static Task fetchByUserIdAndGroupIdAndStatus_Last(
+		long userId, long groupId, int status,
+		OrderByComparator<Task> orderByComparator) {
+
+		return getPersistence().fetchByUserIdAndGroupIdAndStatus_Last(
+			userId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param taskId the primary key of the current task
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next task
+	 * @throws NoSuchTaskException if a task with the primary key could not be found
+	 */
+	public static Task[] findByUserIdAndGroupIdAndStatus_PrevAndNext(
+			long taskId, long userId, long groupId, int status,
+			OrderByComparator<Task> orderByComparator)
+		throws com.rebeca.todolist.entity.exception.NoSuchTaskException {
+
+		return getPersistence().findByUserIdAndGroupIdAndStatus_PrevAndNext(
+			taskId, userId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; and status = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	public static void removeByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		getPersistence().removeByUserIdAndGroupIdAndStatus(
+			userId, groupId, status);
+	}
+
+	/**
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching tasks
+	 */
+	public static int countByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		return getPersistence().countByUserIdAndGroupIdAndStatus(
+			userId, groupId, status);
 	}
 
 	/**

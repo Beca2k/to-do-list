@@ -258,14 +258,28 @@ public interface TaskModel
 	 *
 	 * @return the relative ID of this task
 	 */
-	public int getRelativeId();
+	public long getRelativeId();
 
 	/**
 	 * Sets the relative ID of this task.
 	 *
 	 * @param relativeId the relative ID of this task
 	 */
-	public void setRelativeId(int relativeId);
+	public void setRelativeId(long relativeId);
+
+	/**
+	 * Returns the file entry ID of this task.
+	 *
+	 * @return the file entry ID of this task
+	 */
+	public long getFileEntryId();
+
+	/**
+	 * Sets the file entry ID of this task.
+	 *
+	 * @param fileEntryId the file entry ID of this task
+	 */
+	public void setFileEntryId(long fileEntryId);
 
 	@Override
 	public Task cloneWithOriginalValues();

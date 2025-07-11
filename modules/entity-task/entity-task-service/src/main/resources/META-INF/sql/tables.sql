@@ -11,5 +11,6 @@ create table ToDoList_Task (
 	description VARCHAR(75) null,
 	title VARCHAR(75) null,
 	path_ VARCHAR(75) null,
-	relativeId INTEGER
+	relativeId LONG,
+	fileEntryId LONG
 );

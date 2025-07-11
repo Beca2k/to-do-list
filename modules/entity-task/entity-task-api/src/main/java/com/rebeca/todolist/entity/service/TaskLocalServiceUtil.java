@@ -38,12 +38,13 @@ public class TaskLocalServiceUtil {
 	 * Never modify this class directly. Add custom service methods to <code>com.rebeca.todolist.entity.service.impl.TaskLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
 	public static Task addTask(
-			String title, String description, String path, int relativeId,
+			String title, String description, String path, long fileEntryId,
+			int relativeId,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
 		return getService().addTask(
-			title, description, path, relativeId, serviceContext);
+			title, description, path, fileEntryId, relativeId, serviceContext);
 	}
 
 	/**
@@ -58,6 +59,12 @@ public class TaskLocalServiceUtil {
 	 */
 	public static Task addTask(Task task) {
 		return getService().addTask(task);
+	}
+
+	public static Task changeStatusConcluding(long taskId)
+		throws PortalException {
+
+		return getService().changeStatusConcluding(taskId);
 	}
 
 	/**
@@ -103,6 +110,12 @@ public class TaskLocalServiceUtil {
 	 */
 	public static Task deleteTask(long taskId) throws PortalException {
 		return getService().deleteTask(taskId);
+	}
+
+	public static void deleteTask(long taskId, long userId, long groupId)
+		throws PortalException {
+
+		getService().deleteTask(taskId, userId, groupId);
 	}
 
 	/**
@@ -269,6 +282,26 @@ public class TaskLocalServiceUtil {
 		return getService().getTask(taskId);
 	}
 
+	public static List<Task> getTaskByUserIdAndGroupId(
+		long userId, long groupId) {
+
+		return getService().getTaskByUserIdAndGroupId(userId, groupId);
+	}
+
+	public static List<Task> getTaskByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, int relativeId) {
+
+		return getService().getTaskByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+	}
+
+	public static List<Task> getTaskByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		return getService().getTaskByUserIdAndGroupIdAndStatus(
+			userId, groupId, status);
+	}
+
 	/**
 	 * Returns the task matching the UUID and group.
 	 *
@@ -339,13 +372,13 @@ public class TaskLocalServiceUtil {
 	}
 
 	public static Task updateTask(
-			long id, String title, int status, String description, String path,
-			long fileEntryId, int relativeId,
+			long taskId, String title, int status, String description,
+			String path, int relativeId,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
 		return getService().updateTask(
-			id, title, status, description, path, fileEntryId, relativeId,
+			taskId, title, status, description, path, relativeId,
 			serviceContext);
 	}
 

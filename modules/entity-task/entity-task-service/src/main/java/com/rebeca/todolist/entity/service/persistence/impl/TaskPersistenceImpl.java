@@ -1386,51 +1386,51 @@ public class TaskPersistenceImpl
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 =
 		"task.companyId = ?";
 
-	private FinderPath _finderPathWithPaginationFindByStatusAndGroupId;
-	private FinderPath _finderPathWithoutPaginationFindByStatusAndGroupId;
-	private FinderPath _finderPathCountByStatusAndGroupId;
+	private FinderPath _finderPathWithPaginationFindByUserIdAndGroupId;
+	private FinderPath _finderPathWithoutPaginationFindByUserIdAndGroupId;
+	private FinderPath _finderPathCountByUserIdAndGroupId;
 
 	/**
-	 * Returns all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns all the tasks where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @return the matching tasks
 	 */
 	@Override
-	public List<Task> findByStatusAndGroupId(int status, long groupId) {
-		return findByStatusAndGroupId(
-			status, groupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	public List<Task> findByUserIdAndGroupId(long userId, long groupId) {
+		return findByUserIdAndGroupId(
+			userId, groupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
 	 * @return the range of matching tasks
 	 */
 	@Override
-	public List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end) {
+	public List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end) {
 
-		return findByStatusAndGroupId(status, groupId, start, end, null);
+		return findByUserIdAndGroupId(userId, groupId, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
@@ -1438,22 +1438,22 @@ public class TaskPersistenceImpl
 	 * @return the ordered range of matching tasks
 	 */
 	@Override
-	public List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end,
+	public List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end,
 		OrderByComparator<Task> orderByComparator) {
 
-		return findByStatusAndGroupId(
-			status, groupId, start, end, orderByComparator, true);
+		return findByUserIdAndGroupId(
+			userId, groupId, start, end, orderByComparator, true);
 	}
 
 	/**
-	 * Returns an ordered range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
@@ -1462,8 +1462,8 @@ public class TaskPersistenceImpl
 	 * @return the ordered range of matching tasks
 	 */
 	@Override
-	public List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end,
+	public List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end,
 		OrderByComparator<Task> orderByComparator, boolean useFinderCache) {
 
 		FinderPath finderPath = null;
@@ -1473,14 +1473,14 @@ public class TaskPersistenceImpl
 			(orderByComparator == null)) {
 
 			if (useFinderCache) {
-				finderPath = _finderPathWithoutPaginationFindByStatusAndGroupId;
-				finderArgs = new Object[] {status, groupId};
+				finderPath = _finderPathWithoutPaginationFindByUserIdAndGroupId;
+				finderArgs = new Object[] {userId, groupId};
 			}
 		}
 		else if (useFinderCache) {
-			finderPath = _finderPathWithPaginationFindByStatusAndGroupId;
+			finderPath = _finderPathWithPaginationFindByUserIdAndGroupId;
 			finderArgs = new Object[] {
-				status, groupId, start, end, orderByComparator
+				userId, groupId, start, end, orderByComparator
 			};
 		}
 
@@ -1492,7 +1492,7 @@ public class TaskPersistenceImpl
 
 			if ((list != null) && !list.isEmpty()) {
 				for (Task task : list) {
-					if ((status != task.getStatus()) ||
+					if ((userId != task.getUserId()) ||
 						(groupId != task.getGroupId())) {
 
 						list = null;
@@ -1516,9 +1516,9 @@ public class TaskPersistenceImpl
 
 			sb.append(_SQL_SELECT_TASK_WHERE);
 
-			sb.append(_FINDER_COLUMN_STATUSANDGROUPID_STATUS_2);
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPID_USERID_2);
 
-			sb.append(_FINDER_COLUMN_STATUSANDGROUPID_GROUPID_2);
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPID_GROUPID_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(
@@ -1539,7 +1539,7 @@ public class TaskPersistenceImpl
 
 				QueryPos queryPos = QueryPos.getInstance(query);
 
-				queryPos.add(status);
+				queryPos.add(userId);
 
 				queryPos.add(groupId);
 
@@ -1564,21 +1564,22 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Returns the first task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching task
 	 * @throws NoSuchTaskException if a matching task could not be found
 	 */
 	@Override
-	public Task findByStatusAndGroupId_First(
-			int status, long groupId, OrderByComparator<Task> orderByComparator)
+	public Task findByUserIdAndGroupId_First(
+			long userId, long groupId,
+			OrderByComparator<Task> orderByComparator)
 		throws NoSuchTaskException {
 
-		Task task = fetchByStatusAndGroupId_First(
-			status, groupId, orderByComparator);
+		Task task = fetchByUserIdAndGroupId_First(
+			userId, groupId, orderByComparator);
 
 		if (task != null) {
 			return task;
@@ -1588,8 +1589,8 @@ public class TaskPersistenceImpl
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("status=");
-		sb.append(status);
+		sb.append("userId=");
+		sb.append(userId);
 
 		sb.append(", groupId=");
 		sb.append(groupId);
@@ -1600,19 +1601,19 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Returns the first task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching task, or <code>null</code> if a matching task could not be found
 	 */
 	@Override
-	public Task fetchByStatusAndGroupId_First(
-		int status, long groupId, OrderByComparator<Task> orderByComparator) {
+	public Task fetchByUserIdAndGroupId_First(
+		long userId, long groupId, OrderByComparator<Task> orderByComparator) {
 
-		List<Task> list = findByStatusAndGroupId(
-			status, groupId, 0, 1, orderByComparator);
+		List<Task> list = findByUserIdAndGroupId(
+			userId, groupId, 0, 1, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1622,21 +1623,22 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Returns the last task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching task
 	 * @throws NoSuchTaskException if a matching task could not be found
 	 */
 	@Override
-	public Task findByStatusAndGroupId_Last(
-			int status, long groupId, OrderByComparator<Task> orderByComparator)
+	public Task findByUserIdAndGroupId_Last(
+			long userId, long groupId,
+			OrderByComparator<Task> orderByComparator)
 		throws NoSuchTaskException {
 
-		Task task = fetchByStatusAndGroupId_Last(
-			status, groupId, orderByComparator);
+		Task task = fetchByUserIdAndGroupId_Last(
+			userId, groupId, orderByComparator);
 
 		if (task != null) {
 			return task;
@@ -1646,8 +1648,8 @@ public class TaskPersistenceImpl
 
 		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-		sb.append("status=");
-		sb.append(status);
+		sb.append("userId=");
+		sb.append(userId);
 
 		sb.append(", groupId=");
 		sb.append(groupId);
@@ -1658,25 +1660,25 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Returns the last task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching task, or <code>null</code> if a matching task could not be found
 	 */
 	@Override
-	public Task fetchByStatusAndGroupId_Last(
-		int status, long groupId, OrderByComparator<Task> orderByComparator) {
+	public Task fetchByUserIdAndGroupId_Last(
+		long userId, long groupId, OrderByComparator<Task> orderByComparator) {
 
-		int count = countByStatusAndGroupId(status, groupId);
+		int count = countByUserIdAndGroupId(userId, groupId);
 
 		if (count == 0) {
 			return null;
 		}
 
-		List<Task> list = findByStatusAndGroupId(
-			status, groupId, count - 1, count, orderByComparator);
+		List<Task> list = findByUserIdAndGroupId(
+			userId, groupId, count - 1, count, orderByComparator);
 
 		if (!list.isEmpty()) {
 			return list.get(0);
@@ -1686,18 +1688,18 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Returns the tasks before and after the current task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
 	 * @param taskId the primary key of the current task
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next task
 	 * @throws NoSuchTaskException if a task with the primary key could not be found
 	 */
 	@Override
-	public Task[] findByStatusAndGroupId_PrevAndNext(
-			long taskId, int status, long groupId,
+	public Task[] findByUserIdAndGroupId_PrevAndNext(
+			long taskId, long userId, long groupId,
 			OrderByComparator<Task> orderByComparator)
 		throws NoSuchTaskException {
 
@@ -1710,13 +1712,13 @@ public class TaskPersistenceImpl
 
 			Task[] array = new TaskImpl[3];
 
-			array[0] = getByStatusAndGroupId_PrevAndNext(
-				session, task, status, groupId, orderByComparator, true);
+			array[0] = getByUserIdAndGroupId_PrevAndNext(
+				session, task, userId, groupId, orderByComparator, true);
 
 			array[1] = task;
 
-			array[2] = getByStatusAndGroupId_PrevAndNext(
-				session, task, status, groupId, orderByComparator, false);
+			array[2] = getByUserIdAndGroupId_PrevAndNext(
+				session, task, userId, groupId, orderByComparator, false);
 
 			return array;
 		}
@@ -1728,8 +1730,8 @@ public class TaskPersistenceImpl
 		}
 	}
 
-	protected Task getByStatusAndGroupId_PrevAndNext(
-		Session session, Task task, int status, long groupId,
+	protected Task getByUserIdAndGroupId_PrevAndNext(
+		Session session, Task task, long userId, long groupId,
 		OrderByComparator<Task> orderByComparator, boolean previous) {
 
 		StringBundler sb = null;
@@ -1745,9 +1747,9 @@ public class TaskPersistenceImpl
 
 		sb.append(_SQL_SELECT_TASK_WHERE);
 
-		sb.append(_FINDER_COLUMN_STATUSANDGROUPID_STATUS_2);
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPID_USERID_2);
 
-		sb.append(_FINDER_COLUMN_STATUSANDGROUPID_GROUPID_2);
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPID_GROUPID_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields =
@@ -1818,7 +1820,7 @@ public class TaskPersistenceImpl
 
 		QueryPos queryPos = QueryPos.getInstance(query);
 
-		queryPos.add(status);
+		queryPos.add(userId);
 
 		queryPos.add(groupId);
 
@@ -1841,16 +1843,16 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Removes all the tasks where status = &#63; and groupId = &#63; from the database.
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; from the database.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 */
 	@Override
-	public void removeByStatusAndGroupId(int status, long groupId) {
+	public void removeByUserIdAndGroupId(long userId, long groupId) {
 		for (Task task :
-				findByStatusAndGroupId(
-					status, groupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+				findByUserIdAndGroupId(
+					userId, groupId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
 					null)) {
 
 			remove(task);
@@ -1858,17 +1860,17 @@ public class TaskPersistenceImpl
 	}
 
 	/**
-	 * Returns the number of tasks where status = &#63; and groupId = &#63;.
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @return the number of matching tasks
 	 */
 	@Override
-	public int countByStatusAndGroupId(int status, long groupId) {
-		FinderPath finderPath = _finderPathCountByStatusAndGroupId;
+	public int countByUserIdAndGroupId(long userId, long groupId) {
+		FinderPath finderPath = _finderPathCountByUserIdAndGroupId;
 
-		Object[] finderArgs = new Object[] {status, groupId};
+		Object[] finderArgs = new Object[] {userId, groupId};
 
 		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
 
@@ -1877,9 +1879,9 @@ public class TaskPersistenceImpl
 
 			sb.append(_SQL_COUNT_TASK_WHERE);
 
-			sb.append(_FINDER_COLUMN_STATUSANDGROUPID_STATUS_2);
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPID_USERID_2);
 
-			sb.append(_FINDER_COLUMN_STATUSANDGROUPID_GROUPID_2);
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPID_GROUPID_2);
 
 			String sql = sb.toString();
 
@@ -1892,7 +1894,7 @@ public class TaskPersistenceImpl
 
 				QueryPos queryPos = QueryPos.getInstance(query);
 
-				queryPos.add(status);
+				queryPos.add(userId);
 
 				queryPos.add(groupId);
 
@@ -1911,11 +1913,1182 @@ public class TaskPersistenceImpl
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_STATUSANDGROUPID_STATUS_2 =
-		"task.status = ? AND ";
+	private static final String _FINDER_COLUMN_USERIDANDGROUPID_USERID_2 =
+		"task.userId = ? AND ";
 
-	private static final String _FINDER_COLUMN_STATUSANDGROUPID_GROUPID_2 =
+	private static final String _FINDER_COLUMN_USERIDANDGROUPID_GROUPID_2 =
 		"task.groupId = ?";
+
+	private FinderPath
+		_finderPathWithPaginationFindByUserIdAndGroupIdAndRelativeId;
+	private FinderPath
+		_finderPathWithoutPaginationFindByUserIdAndGroupIdAndRelativeId;
+	private FinderPath _finderPathCountByUserIdAndGroupIdAndRelativeId;
+
+	/**
+	 * Returns all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @return the matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId) {
+
+		return findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+			null);
+	}
+
+	/**
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @return the range of matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end) {
+
+		return findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end,
+		OrderByComparator<Task> orderByComparator) {
+
+		return findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end,
+		OrderByComparator<Task> orderByComparator, boolean useFinderCache) {
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath =
+					_finderPathWithoutPaginationFindByUserIdAndGroupIdAndRelativeId;
+				finderArgs = new Object[] {userId, groupId, relativeId};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath =
+				_finderPathWithPaginationFindByUserIdAndGroupIdAndRelativeId;
+			finderArgs = new Object[] {
+				userId, groupId, relativeId, start, end, orderByComparator
+			};
+		}
+
+		List<Task> list = null;
+
+		if (useFinderCache) {
+			list = (List<Task>)finderCache.getResult(
+				finderPath, finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (Task task : list) {
+					if ((userId != task.getUserId()) ||
+						(groupId != task.getGroupId()) ||
+						(relativeId != task.getRelativeId())) {
+
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					5 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(5);
+			}
+
+			sb.append(_SQL_SELECT_TASK_WHERE);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_USERID_2);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_GROUPID_2);
+
+			sb.append(
+				_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_RELATIVEID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(TaskModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(userId);
+
+				queryPos.add(groupId);
+
+				queryPos.add(relativeId);
+
+				list = (List<Task>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	@Override
+	public Task findByUserIdAndGroupIdAndRelativeId_First(
+			long userId, long groupId, long relativeId,
+			OrderByComparator<Task> orderByComparator)
+		throws NoSuchTaskException {
+
+		Task task = fetchByUserIdAndGroupIdAndRelativeId_First(
+			userId, groupId, relativeId, orderByComparator);
+
+		if (task != null) {
+			return task;
+		}
+
+		StringBundler sb = new StringBundler(8);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("userId=");
+		sb.append(userId);
+
+		sb.append(", groupId=");
+		sb.append(groupId);
+
+		sb.append(", relativeId=");
+		sb.append(relativeId);
+
+		sb.append("}");
+
+		throw new NoSuchTaskException(sb.toString());
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task, or <code>null</code> if a matching task could not be found
+	 */
+	@Override
+	public Task fetchByUserIdAndGroupIdAndRelativeId_First(
+		long userId, long groupId, long relativeId,
+		OrderByComparator<Task> orderByComparator) {
+
+		List<Task> list = findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	@Override
+	public Task findByUserIdAndGroupIdAndRelativeId_Last(
+			long userId, long groupId, long relativeId,
+			OrderByComparator<Task> orderByComparator)
+		throws NoSuchTaskException {
+
+		Task task = fetchByUserIdAndGroupIdAndRelativeId_Last(
+			userId, groupId, relativeId, orderByComparator);
+
+		if (task != null) {
+			return task;
+		}
+
+		StringBundler sb = new StringBundler(8);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("userId=");
+		sb.append(userId);
+
+		sb.append(", groupId=");
+		sb.append(groupId);
+
+		sb.append(", relativeId=");
+		sb.append(relativeId);
+
+		sb.append("}");
+
+		throw new NoSuchTaskException(sb.toString());
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task, or <code>null</code> if a matching task could not be found
+	 */
+	@Override
+	public Task fetchByUserIdAndGroupIdAndRelativeId_Last(
+		long userId, long groupId, long relativeId,
+		OrderByComparator<Task> orderByComparator) {
+
+		int count = countByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<Task> list = findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param taskId the primary key of the current task
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next task
+	 * @throws NoSuchTaskException if a task with the primary key could not be found
+	 */
+	@Override
+	public Task[] findByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+			long taskId, long userId, long groupId, long relativeId,
+			OrderByComparator<Task> orderByComparator)
+		throws NoSuchTaskException {
+
+		Task task = findByPrimaryKey(taskId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			Task[] array = new TaskImpl[3];
+
+			array[0] = getByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+				session, task, userId, groupId, relativeId, orderByComparator,
+				true);
+
+			array[1] = task;
+
+			array[2] = getByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+				session, task, userId, groupId, relativeId, orderByComparator,
+				false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected Task getByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+		Session session, Task task, long userId, long groupId, long relativeId,
+		OrderByComparator<Task> orderByComparator, boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				6 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(5);
+		}
+
+		sb.append(_SQL_SELECT_TASK_WHERE);
+
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_USERID_2);
+
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_GROUPID_2);
+
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_RELATIVEID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(TaskModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(userId);
+
+		queryPos.add(groupId);
+
+		queryPos.add(relativeId);
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(task)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<Task> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 */
+	@Override
+	public void removeByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId) {
+
+		for (Task task :
+				findByUserIdAndGroupIdAndRelativeId(
+					userId, groupId, relativeId, QueryUtil.ALL_POS,
+					QueryUtil.ALL_POS, null)) {
+
+			remove(task);
+		}
+	}
+
+	/**
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @return the number of matching tasks
+	 */
+	@Override
+	public int countByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId) {
+
+		FinderPath finderPath = _finderPathCountByUserIdAndGroupIdAndRelativeId;
+
+		Object[] finderArgs = new Object[] {userId, groupId, relativeId};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(4);
+
+			sb.append(_SQL_COUNT_TASK_WHERE);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_USERID_2);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_GROUPID_2);
+
+			sb.append(
+				_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_RELATIVEID_2);
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(userId);
+
+				queryPos.add(groupId);
+
+				queryPos.add(relativeId);
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String
+		_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_USERID_2 =
+			"task.userId = ? AND ";
+
+	private static final String
+		_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_GROUPID_2 =
+			"task.groupId = ? AND ";
+
+	private static final String
+		_FINDER_COLUMN_USERIDANDGROUPIDANDRELATIVEID_RELATIVEID_2 =
+			"task.relativeId = ?";
+
+	private FinderPath _finderPathWithPaginationFindByUserIdAndGroupIdAndStatus;
+	private FinderPath
+		_finderPathWithoutPaginationFindByUserIdAndGroupIdAndStatus;
+	private FinderPath _finderPathCountByUserIdAndGroupIdAndStatus;
+
+	/**
+	 * Returns all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		return findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
+			null);
+	}
+
+	/**
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @return the range of matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end) {
+
+		return findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end,
+		OrderByComparator<Task> orderByComparator) {
+
+		return findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tasks
+	 */
+	@Override
+	public List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end,
+		OrderByComparator<Task> orderByComparator, boolean useFinderCache) {
+
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+			(orderByComparator == null)) {
+
+			if (useFinderCache) {
+				finderPath =
+					_finderPathWithoutPaginationFindByUserIdAndGroupIdAndStatus;
+				finderArgs = new Object[] {userId, groupId, status};
+			}
+		}
+		else if (useFinderCache) {
+			finderPath =
+				_finderPathWithPaginationFindByUserIdAndGroupIdAndStatus;
+			finderArgs = new Object[] {
+				userId, groupId, status, start, end, orderByComparator
+			};
+		}
+
+		List<Task> list = null;
+
+		if (useFinderCache) {
+			list = (List<Task>)finderCache.getResult(
+				finderPath, finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (Task task : list) {
+					if ((userId != task.getUserId()) ||
+						(groupId != task.getGroupId()) ||
+						(status != task.getStatus())) {
+
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler sb = null;
+
+			if (orderByComparator != null) {
+				sb = new StringBundler(
+					5 + (orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				sb = new StringBundler(5);
+			}
+
+			sb.append(_SQL_SELECT_TASK_WHERE);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_USERID_2);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_STATUS_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(
+					sb, _ORDER_BY_ENTITY_ALIAS, orderByComparator);
+			}
+			else {
+				sb.append(TaskModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(userId);
+
+				queryPos.add(groupId);
+
+				queryPos.add(status);
+
+				list = (List<Task>)QueryUtil.list(
+					query, getDialect(), start, end);
+
+				cacheResult(list);
+
+				if (useFinderCache) {
+					finderCache.putResult(finderPath, finderArgs, list);
+				}
+			}
+			catch (Exception exception) {
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	@Override
+	public Task findByUserIdAndGroupIdAndStatus_First(
+			long userId, long groupId, int status,
+			OrderByComparator<Task> orderByComparator)
+		throws NoSuchTaskException {
+
+		Task task = fetchByUserIdAndGroupIdAndStatus_First(
+			userId, groupId, status, orderByComparator);
+
+		if (task != null) {
+			return task;
+		}
+
+		StringBundler sb = new StringBundler(8);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("userId=");
+		sb.append(userId);
+
+		sb.append(", groupId=");
+		sb.append(groupId);
+
+		sb.append(", status=");
+		sb.append(status);
+
+		sb.append("}");
+
+		throw new NoSuchTaskException(sb.toString());
+	}
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task, or <code>null</code> if a matching task could not be found
+	 */
+	@Override
+	public Task fetchByUserIdAndGroupIdAndStatus_First(
+		long userId, long groupId, int status,
+		OrderByComparator<Task> orderByComparator) {
+
+		List<Task> list = findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	@Override
+	public Task findByUserIdAndGroupIdAndStatus_Last(
+			long userId, long groupId, int status,
+			OrderByComparator<Task> orderByComparator)
+		throws NoSuchTaskException {
+
+		Task task = fetchByUserIdAndGroupIdAndStatus_Last(
+			userId, groupId, status, orderByComparator);
+
+		if (task != null) {
+			return task;
+		}
+
+		StringBundler sb = new StringBundler(8);
+
+		sb.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		sb.append("userId=");
+		sb.append(userId);
+
+		sb.append(", groupId=");
+		sb.append(groupId);
+
+		sb.append(", status=");
+		sb.append(status);
+
+		sb.append("}");
+
+		throw new NoSuchTaskException(sb.toString());
+	}
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task, or <code>null</code> if a matching task could not be found
+	 */
+	@Override
+	public Task fetchByUserIdAndGroupIdAndStatus_Last(
+		long userId, long groupId, int status,
+		OrderByComparator<Task> orderByComparator) {
+
+		int count = countByUserIdAndGroupIdAndStatus(userId, groupId, status);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<Task> list = findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param taskId the primary key of the current task
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next task
+	 * @throws NoSuchTaskException if a task with the primary key could not be found
+	 */
+	@Override
+	public Task[] findByUserIdAndGroupIdAndStatus_PrevAndNext(
+			long taskId, long userId, long groupId, int status,
+			OrderByComparator<Task> orderByComparator)
+		throws NoSuchTaskException {
+
+		Task task = findByPrimaryKey(taskId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			Task[] array = new TaskImpl[3];
+
+			array[0] = getByUserIdAndGroupIdAndStatus_PrevAndNext(
+				session, task, userId, groupId, status, orderByComparator,
+				true);
+
+			array[1] = task;
+
+			array[2] = getByUserIdAndGroupIdAndStatus_PrevAndNext(
+				session, task, userId, groupId, status, orderByComparator,
+				false);
+
+			return array;
+		}
+		catch (Exception exception) {
+			throw processException(exception);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected Task getByUserIdAndGroupIdAndStatus_PrevAndNext(
+		Session session, Task task, long userId, long groupId, int status,
+		OrderByComparator<Task> orderByComparator, boolean previous) {
+
+		StringBundler sb = null;
+
+		if (orderByComparator != null) {
+			sb = new StringBundler(
+				6 + (orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			sb = new StringBundler(5);
+		}
+
+		sb.append(_SQL_SELECT_TASK_WHERE);
+
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_USERID_2);
+
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_GROUPID_2);
+
+		sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_STATUS_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields =
+				orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				sb.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(WHERE_GREATER_THAN);
+					}
+					else {
+						sb.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			sb.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				sb.append(_ORDER_BY_ENTITY_ALIAS);
+				sb.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						sb.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						sb.append(ORDER_BY_ASC);
+					}
+					else {
+						sb.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			sb.append(TaskModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = sb.toString();
+
+		Query query = session.createQuery(sql);
+
+		query.setFirstResult(0);
+		query.setMaxResults(2);
+
+		QueryPos queryPos = QueryPos.getInstance(query);
+
+		queryPos.add(userId);
+
+		queryPos.add(groupId);
+
+		queryPos.add(status);
+
+		if (orderByComparator != null) {
+			for (Object orderByConditionValue :
+					orderByComparator.getOrderByConditionValues(task)) {
+
+				queryPos.add(orderByConditionValue);
+			}
+		}
+
+		List<Task> list = query.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; and status = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	@Override
+	public void removeByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		for (Task task :
+				findByUserIdAndGroupIdAndStatus(
+					userId, groupId, status, QueryUtil.ALL_POS,
+					QueryUtil.ALL_POS, null)) {
+
+			remove(task);
+		}
+	}
+
+	/**
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching tasks
+	 */
+	@Override
+	public int countByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		FinderPath finderPath = _finderPathCountByUserIdAndGroupIdAndStatus;
+
+		Object[] finderArgs = new Object[] {userId, groupId, status};
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler sb = new StringBundler(4);
+
+			sb.append(_SQL_COUNT_TASK_WHERE);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_USERID_2);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_GROUPID_2);
+
+			sb.append(_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_STATUS_2);
+
+			String sql = sb.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query query = session.createQuery(sql);
+
+				QueryPos queryPos = QueryPos.getInstance(query);
+
+				queryPos.add(userId);
+
+				queryPos.add(groupId);
+
+				queryPos.add(status);
+
+				count = (Long)query.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception exception) {
+				throw processException(exception);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String
+		_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_USERID_2 =
+			"task.userId = ? AND ";
+
+	private static final String
+		_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_GROUPID_2 =
+			"task.groupId = ? AND ";
+
+	private static final String
+		_FINDER_COLUMN_USERIDANDGROUPIDANDSTATUS_STATUS_2 = "task.status = ?";
 
 	public TaskPersistenceImpl() {
 		Map<String, String> dbColumnNames = new HashMap<String, String>();
@@ -2521,25 +3694,84 @@ public class TaskPersistenceImpl
 			new String[] {String.class.getName(), Long.class.getName()},
 			new String[] {"uuid_", "companyId"}, false);
 
-		_finderPathWithPaginationFindByStatusAndGroupId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByStatusAndGroupId",
+		_finderPathWithPaginationFindByUserIdAndGroupId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUserIdAndGroupId",
 			new String[] {
-				Integer.class.getName(), Long.class.getName(),
+				Long.class.getName(), Long.class.getName(),
 				Integer.class.getName(), Integer.class.getName(),
 				OrderByComparator.class.getName()
 			},
-			new String[] {"status", "groupId"}, true);
+			new String[] {"userId", "groupId"}, true);
 
-		_finderPathWithoutPaginationFindByStatusAndGroupId = new FinderPath(
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByStatusAndGroupId",
-			new String[] {Integer.class.getName(), Long.class.getName()},
-			new String[] {"status", "groupId"}, true);
+		_finderPathWithoutPaginationFindByUserIdAndGroupId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUserIdAndGroupId",
+			new String[] {Long.class.getName(), Long.class.getName()},
+			new String[] {"userId", "groupId"}, true);
 
-		_finderPathCountByStatusAndGroupId = new FinderPath(
+		_finderPathCountByUserIdAndGroupId = new FinderPath(
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"countByStatusAndGroupId",
-			new String[] {Integer.class.getName(), Long.class.getName()},
-			new String[] {"status", "groupId"}, false);
+			"countByUserIdAndGroupId",
+			new String[] {Long.class.getName(), Long.class.getName()},
+			new String[] {"userId", "groupId"}, false);
+
+		_finderPathWithPaginationFindByUserIdAndGroupIdAndRelativeId =
+			new FinderPath(
+				FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
+				"findByUserIdAndGroupIdAndRelativeId",
+				new String[] {
+					Long.class.getName(), Long.class.getName(),
+					Long.class.getName(), Integer.class.getName(),
+					Integer.class.getName(), OrderByComparator.class.getName()
+				},
+				new String[] {"userId", "groupId", "relativeId"}, true);
+
+		_finderPathWithoutPaginationFindByUserIdAndGroupIdAndRelativeId =
+			new FinderPath(
+				FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+				"findByUserIdAndGroupIdAndRelativeId",
+				new String[] {
+					Long.class.getName(), Long.class.getName(),
+					Long.class.getName()
+				},
+				new String[] {"userId", "groupId", "relativeId"}, true);
+
+		_finderPathCountByUserIdAndGroupIdAndRelativeId = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"countByUserIdAndGroupIdAndRelativeId",
+			new String[] {
+				Long.class.getName(), Long.class.getName(), Long.class.getName()
+			},
+			new String[] {"userId", "groupId", "relativeId"}, false);
+
+		_finderPathWithPaginationFindByUserIdAndGroupIdAndStatus =
+			new FinderPath(
+				FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
+				"findByUserIdAndGroupIdAndStatus",
+				new String[] {
+					Long.class.getName(), Long.class.getName(),
+					Integer.class.getName(), Integer.class.getName(),
+					Integer.class.getName(), OrderByComparator.class.getName()
+				},
+				new String[] {"userId", "groupId", "status"}, true);
+
+		_finderPathWithoutPaginationFindByUserIdAndGroupIdAndStatus =
+			new FinderPath(
+				FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+				"findByUserIdAndGroupIdAndStatus",
+				new String[] {
+					Long.class.getName(), Long.class.getName(),
+					Integer.class.getName()
+				},
+				new String[] {"userId", "groupId", "status"}, true);
+
+		_finderPathCountByUserIdAndGroupIdAndStatus = new FinderPath(
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"countByUserIdAndGroupIdAndStatus",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				Integer.class.getName()
+			},
+			new String[] {"userId", "groupId", "status"}, false);
 
 		TaskUtil.setPersistence(this);
 	}

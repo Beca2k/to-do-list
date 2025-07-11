@@ -52,7 +52,7 @@ public class TaskCacheModel implements CacheModel<Task>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(27);
+		StringBundler sb = new StringBundler(29);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -80,6 +80,8 @@ public class TaskCacheModel implements CacheModel<Task>, Externalizable {
 		sb.append(path);
 		sb.append(", relativeId=");
 		sb.append(relativeId);
+		sb.append(", fileEntryId=");
+		sb.append(fileEntryId);
 		sb.append("}");
 
 		return sb.toString();
@@ -146,6 +148,7 @@ public class TaskCacheModel implements CacheModel<Task>, Externalizable {
 		}
 
 		taskImpl.setRelativeId(relativeId);
+		taskImpl.setFileEntryId(fileEntryId);
 
 		taskImpl.resetOriginalValues();
 
@@ -172,7 +175,9 @@ public class TaskCacheModel implements CacheModel<Task>, Externalizable {
 		title = objectInput.readUTF();
 		path = objectInput.readUTF();
 
-		relativeId = objectInput.readInt();
+		relativeId = objectInput.readLong();
+
+		fileEntryId = objectInput.readLong();
 	}
 
 	@Override
@@ -225,7 +230,9 @@ public class TaskCacheModel implements CacheModel<Task>, Externalizable {
 			objectOutput.writeUTF(path);
 		}
 
-		objectOutput.writeInt(relativeId);
+		objectOutput.writeLong(relativeId);
+
+		objectOutput.writeLong(fileEntryId);
 	}
 
 	public String uuid;
@@ -240,6 +247,7 @@ public class TaskCacheModel implements CacheModel<Task>, Externalizable {
 	public String description;
 	public String title;
 	public String path;
-	public int relativeId;
+	public long relativeId;
+	public long fileEntryId;
 
 }

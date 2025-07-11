@@ -29,7 +29,8 @@
 		<column name="description" type="String" />
 		<column name="title" type="String" />
 		<column name="path" type="String" />
-		<column name="relativeId" type="int" />
+		<column name="relativeId" type="long" />
+		<column name="fileEntryId" type="long" />
 
 		<!-- Order -->
 
@@ -39,9 +40,21 @@
 
 		<!-- Finder methods -->
 
-		<finder name="StatusAndGroupId" return-type="Collection">
-			<finder-column name="status" />
-			<finder-column name="groupId" />
+		<finder name="UserIdAndGroupId" return-type="Collection">
+			<finder-column name="userId"/>
+			<finder-column name="groupId"/>
+		</finder>
+
+		<finder name="UserIdAndGroupIdAndRelativeId" return-type="Collection">
+			<finder-column name="userId"/>
+			<finder-column name="groupId"/>
+			<finder-column name="relativeId"/>
+		</finder>
+
+		<finder name="UserIdAndGroupIdAndStatus" return-type="Collection">
+			<finder-column name="userId"/>
+			<finder-column name="groupId"/>
+			<finder-column name="status"/>
 		</finder>
 
 		<!-- References -->

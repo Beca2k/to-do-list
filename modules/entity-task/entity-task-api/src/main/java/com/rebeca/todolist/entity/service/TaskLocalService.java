@@ -57,8 +57,8 @@ public interface TaskLocalService
 	 * Never modify this interface directly. Add custom service methods to <code>com.rebeca.todolist.entity.service.impl.TaskLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the task local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link TaskLocalServiceUtil} if injection and service tracking are not available.
 	 */
 	public Task addTask(
-			String title, String description, String path, int relativeId,
-			ServiceContext serviceContext)
+			String title, String description, String path, long fileEntryId,
+			int relativeId, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**
@@ -73,6 +73,8 @@ public interface TaskLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Task addTask(Task task);
+
+	public Task changeStatusConcluding(long taskId) throws PortalException;
 
 	/**
 	 * @throws PortalException
@@ -109,6 +111,9 @@ public interface TaskLocalService
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	public Task deleteTask(long taskId) throws PortalException;
+
+	public void deleteTask(long taskId, long userId, long groupId)
+		throws PortalException;
 
 	/**
 	 * Deletes the task from the database. Also notifies the appropriate model listeners.
@@ -243,6 +248,17 @@ public interface TaskLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Task getTask(long taskId) throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Task> getTaskByUserIdAndGroupId(long userId, long groupId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Task> getTaskByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, int relativeId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Task> getTaskByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status);
+
 	/**
 	 * Returns the task matching the UUID and group.
 	 *
@@ -303,8 +319,8 @@ public interface TaskLocalService
 	public int getTasksCount();
 
 	public Task updateTask(
-			long id, String title, int status, String description, String path,
-			long fileEntryId, int relativeId, ServiceContext serviceContext)
+			long taskId, String title, int status, String description,
+			String path, int relativeId, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**

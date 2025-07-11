@@ -47,8 +47,10 @@ public class TaskTable extends BaseTable<TaskTable> {
 		"title", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<TaskTable, String> path = createColumn(
 		"path_", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<TaskTable, Integer> relativeId = createColumn(
-		"relativeId", Integer.class, Types.INTEGER, Column.FLAG_DEFAULT);
+	public final Column<TaskTable, Long> relativeId = createColumn(
+		"relativeId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<TaskTable, Long> fileEntryId = createColumn(
+		"fileEntryId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 
 	private TaskTable() {
 		super("ToDoList_Task", TaskTable::new);

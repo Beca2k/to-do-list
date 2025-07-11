@@ -46,6 +46,7 @@ public class TaskWrapper
 		attributes.put("title", getTitle());
 		attributes.put("path", getPath());
 		attributes.put("relativeId", getRelativeId());
+		attributes.put("fileEntryId", getFileEntryId());
 
 		return attributes;
 	}
@@ -124,10 +125,16 @@ public class TaskWrapper
 			setPath(path);
 		}
 
-		Integer relativeId = (Integer)attributes.get("relativeId");
+		Long relativeId = (Long)attributes.get("relativeId");
 
 		if (relativeId != null) {
 			setRelativeId(relativeId);
+		}
+
+		Long fileEntryId = (Long)attributes.get("fileEntryId");
+
+		if (fileEntryId != null) {
+			setFileEntryId(fileEntryId);
 		}
 	}
 
@@ -164,6 +171,16 @@ public class TaskWrapper
 	@Override
 	public String getDescription() {
 		return model.getDescription();
+	}
+
+	/**
+	 * Returns the file entry ID of this task.
+	 *
+	 * @return the file entry ID of this task
+	 */
+	@Override
+	public long getFileEntryId() {
+		return model.getFileEntryId();
 	}
 
 	/**
@@ -212,7 +229,7 @@ public class TaskWrapper
 	 * @return the relative ID of this task
 	 */
 	@Override
-	public int getRelativeId() {
+	public long getRelativeId() {
 		return model.getRelativeId();
 	}
 
@@ -322,6 +339,16 @@ public class TaskWrapper
 	}
 
 	/**
+	 * Sets the file entry ID of this task.
+	 *
+	 * @param fileEntryId the file entry ID of this task
+	 */
+	@Override
+	public void setFileEntryId(long fileEntryId) {
+		model.setFileEntryId(fileEntryId);
+	}
+
+	/**
 	 * Sets the group ID of this task.
 	 *
 	 * @param groupId the group ID of this task
@@ -367,7 +394,7 @@ public class TaskWrapper
 	 * @param relativeId the relative ID of this task
 	 */
 	@Override
-	public void setRelativeId(int relativeId) {
+	public void setRelativeId(long relativeId) {
 		model.setRelativeId(relativeId);
 	}
 

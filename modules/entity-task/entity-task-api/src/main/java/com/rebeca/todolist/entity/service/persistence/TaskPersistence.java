@@ -379,58 +379,58 @@ public interface TaskPersistence extends BasePersistence<Task> {
 	public int countByUuid_C(String uuid, long companyId);
 
 	/**
-	 * Returns all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns all the tasks where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @return the matching tasks
 	 */
-	public java.util.List<Task> findByStatusAndGroupId(
-		int status, long groupId);
+	public java.util.List<Task> findByUserIdAndGroupId(
+		long userId, long groupId);
 
 	/**
-	 * Returns a range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
 	 * @return the range of matching tasks
 	 */
-	public java.util.List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end);
+	public java.util.List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end);
 
 	/**
-	 * Returns an ordered range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching tasks
 	 */
-	public java.util.List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end,
+	public java.util.List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Task>
 			orderByComparator);
 
 	/**
-	 * Returns an ordered range of all the tasks where status = &#63; and groupId = &#63;.
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
 	 * </p>
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param start the lower bound of the range of tasks
 	 * @param end the upper bound of the range of tasks (not inclusive)
@@ -438,100 +438,436 @@ public interface TaskPersistence extends BasePersistence<Task> {
 	 * @param useFinderCache whether to use the finder cache
 	 * @return the ordered range of matching tasks
 	 */
-	public java.util.List<Task> findByStatusAndGroupId(
-		int status, long groupId, int start, int end,
+	public java.util.List<Task> findByUserIdAndGroupId(
+		long userId, long groupId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<Task>
 			orderByComparator,
 		boolean useFinderCache);
 
 	/**
-	 * Returns the first task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching task
 	 * @throws NoSuchTaskException if a matching task could not be found
 	 */
-	public Task findByStatusAndGroupId_First(
-			int status, long groupId,
+	public Task findByUserIdAndGroupId_First(
+			long userId, long groupId,
 			com.liferay.portal.kernel.util.OrderByComparator<Task>
 				orderByComparator)
 		throws NoSuchTaskException;
 
 	/**
-	 * Returns the first task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching task, or <code>null</code> if a matching task could not be found
 	 */
-	public Task fetchByStatusAndGroupId_First(
-		int status, long groupId,
+	public Task fetchByUserIdAndGroupId_First(
+		long userId, long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator<Task>
 			orderByComparator);
 
 	/**
-	 * Returns the last task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching task
 	 * @throws NoSuchTaskException if a matching task could not be found
 	 */
-	public Task findByStatusAndGroupId_Last(
-			int status, long groupId,
+	public Task findByUserIdAndGroupId_Last(
+			long userId, long groupId,
 			com.liferay.portal.kernel.util.OrderByComparator<Task>
 				orderByComparator)
 		throws NoSuchTaskException;
 
 	/**
-	 * Returns the last task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching task, or <code>null</code> if a matching task could not be found
 	 */
-	public Task fetchByStatusAndGroupId_Last(
-		int status, long groupId,
+	public Task fetchByUserIdAndGroupId_Last(
+		long userId, long groupId,
 		com.liferay.portal.kernel.util.OrderByComparator<Task>
 			orderByComparator);
 
 	/**
-	 * Returns the tasks before and after the current task in the ordered set where status = &#63; and groupId = &#63;.
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63;.
 	 *
 	 * @param taskId the primary key of the current task
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next task
 	 * @throws NoSuchTaskException if a task with the primary key could not be found
 	 */
-	public Task[] findByStatusAndGroupId_PrevAndNext(
-			long taskId, int status, long groupId,
+	public Task[] findByUserIdAndGroupId_PrevAndNext(
+			long taskId, long userId, long groupId,
 			com.liferay.portal.kernel.util.OrderByComparator<Task>
 				orderByComparator)
 		throws NoSuchTaskException;
 
 	/**
-	 * Removes all the tasks where status = &#63; and groupId = &#63; from the database.
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; from the database.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 */
-	public void removeByStatusAndGroupId(int status, long groupId);
+	public void removeByUserIdAndGroupId(long userId, long groupId);
 
 	/**
-	 * Returns the number of tasks where status = &#63; and groupId = &#63;.
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63;.
 	 *
-	 * @param status the status
+	 * @param userId the user ID
 	 * @param groupId the group ID
 	 * @return the number of matching tasks
 	 */
-	public int countByStatusAndGroupId(int status, long groupId);
+	public int countByUserIdAndGroupId(long userId, long groupId);
+
+	/**
+	 * Returns all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @return the matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId);
+
+	/**
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @return the range of matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public Task findByUserIdAndGroupIdAndRelativeId_First(
+			long userId, long groupId, long relativeId,
+			com.liferay.portal.kernel.util.OrderByComparator<Task>
+				orderByComparator)
+		throws NoSuchTaskException;
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public Task fetchByUserIdAndGroupIdAndRelativeId_First(
+		long userId, long groupId, long relativeId,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator);
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public Task findByUserIdAndGroupIdAndRelativeId_Last(
+			long userId, long groupId, long relativeId,
+			com.liferay.portal.kernel.util.OrderByComparator<Task>
+				orderByComparator)
+		throws NoSuchTaskException;
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public Task fetchByUserIdAndGroupIdAndRelativeId_Last(
+		long userId, long groupId, long relativeId,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator);
+
+	/**
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param taskId the primary key of the current task
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next task
+	 * @throws NoSuchTaskException if a task with the primary key could not be found
+	 */
+	public Task[] findByUserIdAndGroupIdAndRelativeId_PrevAndNext(
+			long taskId, long userId, long groupId, long relativeId,
+			com.liferay.portal.kernel.util.OrderByComparator<Task>
+				orderByComparator)
+		throws NoSuchTaskException;
+
+	/**
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; and relativeId = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 */
+	public void removeByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId);
+
+	/**
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63; and relativeId = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param relativeId the relative ID
+	 * @return the number of matching tasks
+	 */
+	public int countByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, long relativeId);
+
+	/**
+	 * Returns all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status);
+
+	/**
+	 * Returns a range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @return the range of matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>TaskModelImpl</code>.
+	 * </p>
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of tasks
+	 * @param end the upper bound of the range of tasks (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching tasks
+	 */
+	public java.util.List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public Task findByUserIdAndGroupIdAndStatus_First(
+			long userId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<Task>
+				orderByComparator)
+		throws NoSuchTaskException;
+
+	/**
+	 * Returns the first task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public Task fetchByUserIdAndGroupIdAndStatus_First(
+		long userId, long groupId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator);
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task
+	 * @throws NoSuchTaskException if a matching task could not be found
+	 */
+	public Task findByUserIdAndGroupIdAndStatus_Last(
+			long userId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<Task>
+				orderByComparator)
+		throws NoSuchTaskException;
+
+	/**
+	 * Returns the last task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching task, or <code>null</code> if a matching task could not be found
+	 */
+	public Task fetchByUserIdAndGroupIdAndStatus_Last(
+		long userId, long groupId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator<Task>
+			orderByComparator);
+
+	/**
+	 * Returns the tasks before and after the current task in the ordered set where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param taskId the primary key of the current task
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next task
+	 * @throws NoSuchTaskException if a task with the primary key could not be found
+	 */
+	public Task[] findByUserIdAndGroupIdAndStatus_PrevAndNext(
+			long taskId, long userId, long groupId, int status,
+			com.liferay.portal.kernel.util.OrderByComparator<Task>
+				orderByComparator)
+		throws NoSuchTaskException;
+
+	/**
+	 * Removes all the tasks where userId = &#63; and groupId = &#63; and status = &#63; from the database.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	public void removeByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status);
+
+	/**
+	 * Returns the number of tasks where userId = &#63; and groupId = &#63; and status = &#63;.
+	 *
+	 * @param userId the user ID
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching tasks
+	 */
+	public int countByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status);
 
 	/**
 	 * Caches the task in the entity cache if it is enabled.
