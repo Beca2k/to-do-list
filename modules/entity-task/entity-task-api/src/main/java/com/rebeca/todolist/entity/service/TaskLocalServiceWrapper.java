@@ -29,7 +29,7 @@ public class TaskLocalServiceWrapper
 	@Override
 	public com.rebeca.todolist.entity.model.Task addTask(
 			String title, String description, String path, long fileEntryId,
-			int relativeId,
+			long relativeId,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
@@ -258,6 +258,30 @@ public class TaskLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.rebeca.todolist.entity.model.Task>
+		findByUserIdAndGroupId(long userId, long groupId) {
+
+		return _taskLocalService.findByUserIdAndGroupId(userId, groupId);
+	}
+
+	@Override
+	public java.util.List<com.rebeca.todolist.entity.model.Task>
+		findByUserIdAndGroupIdAndRelativeId(
+			long userId, long groupId, int relativeId) {
+
+		return _taskLocalService.findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+	}
+
+	@Override
+	public java.util.List<com.rebeca.todolist.entity.model.Task>
+		findByUserIdAndGroupIdAndStatus(long userId, long groupId, int status) {
+
+		return _taskLocalService.findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -314,31 +338,6 @@ public class TaskLocalServiceWrapper
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _taskLocalService.getTask(taskId);
-	}
-
-	@Override
-	public java.util.List<com.rebeca.todolist.entity.model.Task>
-		getTaskByUserIdAndGroupId(long userId, long groupId) {
-
-		return _taskLocalService.getTaskByUserIdAndGroupId(userId, groupId);
-	}
-
-	@Override
-	public java.util.List<com.rebeca.todolist.entity.model.Task>
-		getTaskByUserIdAndGroupIdAndRelativeId(
-			long userId, long groupId, int relativeId) {
-
-		return _taskLocalService.getTaskByUserIdAndGroupIdAndRelativeId(
-			userId, groupId, relativeId);
-	}
-
-	@Override
-	public java.util.List<com.rebeca.todolist.entity.model.Task>
-		getTaskByUserIdAndGroupIdAndStatus(
-			long userId, long groupId, int status) {
-
-		return _taskLocalService.getTaskByUserIdAndGroupIdAndStatus(
-			userId, groupId, status);
 	}
 
 	/**
@@ -423,7 +422,7 @@ public class TaskLocalServiceWrapper
 	@Override
 	public com.rebeca.todolist.entity.model.Task updateTask(
 			long taskId, String title, int status, String description,
-			String path, int relativeId,
+			String path, long relativeId,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 

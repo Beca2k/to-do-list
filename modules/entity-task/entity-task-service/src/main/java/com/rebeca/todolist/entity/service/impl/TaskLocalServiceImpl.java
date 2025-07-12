@@ -13,7 +13,6 @@ import com.rebeca.todolist.entity.model.Task;
 import com.rebeca.todolist.entity.service.base.TaskLocalServiceBaseImpl;
 import com.rebeca.todolist.entity.service.constant.TaskStatus;
 import org.osgi.service.component.annotations.Component;
-
 import java.util.Date;
 import java.util.List;
 
@@ -26,9 +25,10 @@ import java.util.List;
         service = AopService.class
 )
 
+
 public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
 
-    public Task addTask(String title, String description, String path, long fileEntryId, int relativeId, ServiceContext serviceContext) throws PortalException, PortalException {
+    public Task addTask(String title, String description, String path, long fileEntryId, long relativeId, ServiceContext serviceContext) throws PortalException, PortalException {
 
         Group group = GroupLocalServiceUtil.getGroup(serviceContext.getScopeGroupId());
         User user = UserLocalServiceUtil.getUser(serviceContext.getUserId());
@@ -55,7 +55,7 @@ public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
 
     private static final Log _log = LogFactoryUtil.getLog(TaskLocalServiceImpl.class);
 
-    public Task updateTask(long taskId, String title, int status, String description, String path, int relativeId, ServiceContext serviceContext) throws PortalException {
+    public Task updateTask(long taskId, String title, int status, String description, String path, long relativeId, ServiceContext serviceContext) throws PortalException {
 
         Task task = null;
 
@@ -92,15 +92,15 @@ public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
         return task;
     }
 
-    public List<Task> getTaskByUserIdAndGroupId(long userId, long groupId) {
+    public List<Task> findByUserIdAndGroupId(long userId, long groupId) {
         return taskPersistence.findByUserIdAndGroupId(userId, groupId);
     }
 
-    public List<Task> getTaskByUserIdAndGroupIdAndRelativeId(long userId, long groupId, int relativeId) {
+    public List<Task> findByUserIdAndGroupIdAndRelativeId(long userId, long groupId, int relativeId) {
         return taskPersistence.findByUserIdAndGroupIdAndRelativeId(userId, groupId, relativeId);
     }
 
-    public List<Task> getTaskByUserIdAndGroupIdAndStatus(long userId, long groupId, int status) {
+    public List<Task> findByUserIdAndGroupIdAndStatus(long userId, long groupId, int status) {
         return taskPersistence.findByUserIdAndGroupIdAndStatus(userId, groupId, status);
     }
 

@@ -39,7 +39,7 @@ public class TaskLocalServiceUtil {
 	 */
 	public static Task addTask(
 			String title, String description, String path, long fileEntryId,
-			int relativeId,
+			long relativeId,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
@@ -232,6 +232,24 @@ public class TaskLocalServiceUtil {
 		return getService().fetchTaskByUuidAndGroupId(uuid, groupId);
 	}
 
+	public static List<Task> findByUserIdAndGroupId(long userId, long groupId) {
+		return getService().findByUserIdAndGroupId(userId, groupId);
+	}
+
+	public static List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, int relativeId) {
+
+		return getService().findByUserIdAndGroupIdAndRelativeId(
+			userId, groupId, relativeId);
+	}
+
+	public static List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status) {
+
+		return getService().findByUserIdAndGroupIdAndStatus(
+			userId, groupId, status);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 
@@ -280,26 +298,6 @@ public class TaskLocalServiceUtil {
 	 */
 	public static Task getTask(long taskId) throws PortalException {
 		return getService().getTask(taskId);
-	}
-
-	public static List<Task> getTaskByUserIdAndGroupId(
-		long userId, long groupId) {
-
-		return getService().getTaskByUserIdAndGroupId(userId, groupId);
-	}
-
-	public static List<Task> getTaskByUserIdAndGroupIdAndRelativeId(
-		long userId, long groupId, int relativeId) {
-
-		return getService().getTaskByUserIdAndGroupIdAndRelativeId(
-			userId, groupId, relativeId);
-	}
-
-	public static List<Task> getTaskByUserIdAndGroupIdAndStatus(
-		long userId, long groupId, int status) {
-
-		return getService().getTaskByUserIdAndGroupIdAndStatus(
-			userId, groupId, status);
 	}
 
 	/**
@@ -373,7 +371,7 @@ public class TaskLocalServiceUtil {
 
 	public static Task updateTask(
 			long taskId, String title, int status, String description,
-			String path, int relativeId,
+			String path, long relativeId,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 

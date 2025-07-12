@@ -1,0 +1,7 @@
+Bundle-Name: task-portlet
+Bundle-SymbolicName: com.rebeca.todolist.portlet
+Bundle-Version: 1.0.0
+Export-Package: com.rebeca.todolist.portlet.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"

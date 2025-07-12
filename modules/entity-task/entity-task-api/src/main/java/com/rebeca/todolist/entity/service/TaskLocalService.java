@@ -58,7 +58,7 @@ public interface TaskLocalService
 	 */
 	public Task addTask(
 			String title, String description, String path, long fileEntryId,
-			int relativeId, ServiceContext serviceContext)
+			long relativeId, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**
@@ -213,6 +213,14 @@ public interface TaskLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Task fetchTaskByUuidAndGroupId(String uuid, long groupId);
 
+	public List<Task> findByUserIdAndGroupId(long userId, long groupId);
+
+	public List<Task> findByUserIdAndGroupIdAndRelativeId(
+		long userId, long groupId, int relativeId);
+
+	public List<Task> findByUserIdAndGroupIdAndStatus(
+		long userId, long groupId, int status);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -247,17 +255,6 @@ public interface TaskLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Task getTask(long taskId) throws PortalException;
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Task> getTaskByUserIdAndGroupId(long userId, long groupId);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Task> getTaskByUserIdAndGroupIdAndRelativeId(
-		long userId, long groupId, int relativeId);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Task> getTaskByUserIdAndGroupIdAndStatus(
-		long userId, long groupId, int status);
 
 	/**
 	 * Returns the task matching the UUID and group.
@@ -320,7 +317,7 @@ public interface TaskLocalService
 
 	public Task updateTask(
 			long taskId, String title, int status, String description,
-			String path, int relativeId, ServiceContext serviceContext)
+			String path, long relativeId, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**
