@@ -25,8 +25,9 @@ import java.util.List;
         service = AopService.class
 )
 
-
 public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
+
+    private static final Log _log = LogFactoryUtil.getLog(TaskLocalServiceImpl.class);
 
     public Task addTask(String title, String description, String path, long fileEntryId, long relativeId, ServiceContext serviceContext) throws PortalException, PortalException {
 
@@ -48,12 +49,11 @@ public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
         task.setUserName(user.getScreenName());
         task.setCreateDate(serviceContext.getCreateDate());
         task.setModifiedDate(serviceContext.getCreateDate());
+
         task = taskLocalService.addTask(task);
 
         return task;
     }
-
-    private static final Log _log = LogFactoryUtil.getLog(TaskLocalServiceImpl.class);
 
     public Task updateTask(long taskId, String title, int status, String description, String path, long relativeId, ServiceContext serviceContext) throws PortalException {
 
@@ -76,11 +76,11 @@ public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
         return task;
     }
 
-    public Task changeStatusConcluding(long taskId) throws PortalException {
+    public Task changeStatus(long taskId) throws PortalException {
 
         Task task = getTask(taskId);
 
-        if (task == null) {
+        if (task == null) {//TODO tratamento de exceção
             return null;
         }
 
@@ -117,6 +117,5 @@ public class TaskLocalServiceImpl extends TaskLocalServiceBaseImpl {
             }
             deleteTask(task);
         }
-
     }
 }

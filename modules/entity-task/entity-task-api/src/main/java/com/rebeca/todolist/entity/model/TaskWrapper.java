@@ -47,6 +47,7 @@ public class TaskWrapper
 		attributes.put("path", getPath());
 		attributes.put("relativeId", getRelativeId());
 		attributes.put("fileEntryId", getFileEntryId());
+		attributes.put("done", isDone());
 
 		return attributes;
 	}
@@ -136,6 +137,12 @@ public class TaskWrapper
 		if (fileEntryId != null) {
 			setFileEntryId(fileEntryId);
 		}
+
+		Boolean done = (Boolean)attributes.get("done");
+
+		if (done != null) {
+			setDone(done);
+		}
 	}
 
 	@Override
@@ -171,6 +178,16 @@ public class TaskWrapper
 	@Override
 	public String getDescription() {
 		return model.getDescription();
+	}
+
+	/**
+	 * Returns the done of this task.
+	 *
+	 * @return the done of this task
+	 */
+	@Override
+	public boolean getDone() {
+		return model.getDone();
 	}
 
 	/**
@@ -303,6 +320,16 @@ public class TaskWrapper
 		return model.getUuid();
 	}
 
+	/**
+	 * Returns <code>true</code> if this task is done.
+	 *
+	 * @return <code>true</code> if this task is done; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDone() {
+		return model.isDone();
+	}
+
 	@Override
 	public void persist() {
 		model.persist();
@@ -336,6 +363,16 @@ public class TaskWrapper
 	@Override
 	public void setDescription(String description) {
 		model.setDescription(description);
+	}
+
+	/**
+	 * Sets whether this task is done.
+	 *
+	 * @param done the done of this task
+	 */
+	@Override
+	public void setDone(boolean done) {
+		model.setDone(done);
 	}
 
 	/**

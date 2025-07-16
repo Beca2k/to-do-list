@@ -51,6 +51,8 @@ public class TaskTable extends BaseTable<TaskTable> {
 		"relativeId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<TaskTable, Long> fileEntryId = createColumn(
 		"fileEntryId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<TaskTable, Boolean> done = createColumn(
+		"done", Boolean.class, Types.BOOLEAN, Column.FLAG_DEFAULT);
 
 	private TaskTable() {
 		super("ToDoList_Task", TaskTable::new);

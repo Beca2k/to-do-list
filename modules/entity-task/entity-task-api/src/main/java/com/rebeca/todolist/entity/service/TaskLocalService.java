@@ -74,7 +74,7 @@ public interface TaskLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Task addTask(Task task);
 
-	public Task changeStatusConcluding(long taskId) throws PortalException;
+	public Task changeStatus(long taskId) throws PortalException;
 
 	/**
 	 * @throws PortalException

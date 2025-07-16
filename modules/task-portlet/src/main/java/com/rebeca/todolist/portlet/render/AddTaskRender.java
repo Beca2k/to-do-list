@@ -19,6 +19,6 @@ public class AddTaskRender  implements MVCRenderCommand{
     @Override
     public String render(RenderRequest renderRequest, RenderResponse renderResponse) throws PortletException {
 
-        return "/task/task-frm.jsp";
+        return "/task/task_frm.jsp";
     }
 }

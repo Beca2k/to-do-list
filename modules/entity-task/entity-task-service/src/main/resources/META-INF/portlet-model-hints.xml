@@ -1,6 +1,19 @@
 <?xml version="1.0"?>
 
 <model-hints>
+	<model name="com.rebeca.todolist.entity.model.Subtask">
+		<field name="uuid" type="String" />
+		<field name="subtaskId" type="long" />
+		<field name="taskId" type="long" />
+		<field name="title" type="String" />
+		<field name="status" type="int" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+	</model>
 	<model name="com.rebeca.todolist.entity.model.Task">
 		<field name="uuid" type="String" />
 		<field name="taskId" type="long" />
@@ -15,10 +28,11 @@
 			<hint name="max-length">2000</hint>
 		</field>
 		<field name="title" type="String" />
-		<field name="path" type="String" >
+		<field name="path" type="String">
 			<hint name="max-length">5000</hint>
 		</field>
 		<field name="relativeId" type="long" />
 		<field name="fileEntryId" type="long" />
+		<field name="done" type="boolean" />
 	</model>
 </model-hints>

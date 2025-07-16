@@ -55,11 +55,10 @@ public class TaskLocalServiceWrapper
 	}
 
 	@Override
-	public com.rebeca.todolist.entity.model.Task changeStatusConcluding(
-			long taskId)
+	public com.rebeca.todolist.entity.model.Task changeStatus(long taskId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _taskLocalService.changeStatusConcluding(taskId);
+		return _taskLocalService.changeStatus(taskId);
 	}
 
 	/**

@@ -61,10 +61,8 @@ public class TaskLocalServiceUtil {
 		return getService().addTask(task);
 	}
 
-	public static Task changeStatusConcluding(long taskId)
-		throws PortalException {
-
-		return getService().changeStatusConcluding(taskId);
+	public static Task changeStatus(long taskId) throws PortalException {
+		return getService().changeStatus(taskId);
 	}
 
 	/**

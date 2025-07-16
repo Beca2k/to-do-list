@@ -142,6 +142,8 @@ public class TaskPersistenceTest {
 
 		newTask.setFileEntryId(RandomTestUtil.nextLong());
 
+		newTask.setDone(RandomTestUtil.randomBoolean());
+
 		_tasks.add(_persistence.update(newTask));
 
 		Task existingTask = _persistence.findByPrimaryKey(
@@ -169,6 +171,7 @@ public class TaskPersistenceTest {
 			existingTask.getRelativeId(), newTask.getRelativeId());
 		Assert.assertEquals(
 			existingTask.getFileEntryId(), newTask.getFileEntryId());
+		Assert.assertEquals(existingTask.isDone(), newTask.isDone());
 	}
 
 	@Test
@@ -253,7 +256,7 @@ public class TaskPersistenceTest {
 			"companyId", true, "userId", true, "userName", true, "createDate",
 			true, "modifiedDate", true, "status", true, "description", true,
 			"title", true, "path", true, "relativeId", true, "fileEntryId",
-			true);
+			true, "done", true);
 	}
 
 	@Test
@@ -545,6 +548,8 @@ public class TaskPersistenceTest {
 		task.setRelativeId(RandomTestUtil.nextLong());
 
 		task.setFileEntryId(RandomTestUtil.nextLong());
+
+		task.setDone(RandomTestUtil.randomBoolean());
 
 		_tasks.add(_persistence.update(task));
 

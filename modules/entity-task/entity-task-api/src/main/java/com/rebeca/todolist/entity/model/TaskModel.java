@@ -281,6 +281,27 @@ public interface TaskModel
 	 */
 	public void setFileEntryId(long fileEntryId);
 
+	/**
+	 * Returns the done of this task.
+	 *
+	 * @return the done of this task
+	 */
+	public boolean getDone();
+
+	/**
+	 * Returns <code>true</code> if this task is done.
+	 *
+	 * @return <code>true</code> if this task is done; <code>false</code> otherwise
+	 */
+	public boolean isDone();
+
+	/**
+	 * Sets whether this task is done.
+	 *
+	 * @param done the done of this task
+	 */
+	public void setDone(boolean done);
+
 	@Override
 	public Task cloneWithOriginalValues();
 

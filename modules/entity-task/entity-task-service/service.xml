@@ -4,7 +4,7 @@
 
 <service-builder dependency-injector="ds" package-path="com.rebeca.todolist.entity">
 	<namespace>ToDoList</namespace>
-	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+
 	<entity local-service="true" name="Task" remote-service="true" uuid="true">
 
 		<!-- PK fields -->
@@ -31,6 +31,7 @@
 		<column name="path" type="String" />
 		<column name="relativeId" type="long" />
 		<column name="fileEntryId" type="long" />
+		<column name="done" type="boolean" />
 
 		<!-- Order -->
 
@@ -61,5 +62,27 @@
 
 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
 		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+	</entity>
+
+	<entity local-service="true" name="Subtask"  remote-service="true" uuid="true">
+		<column name="subtaskId" type="long" primary="true" />
+		<column name="taskId" type="long" />
+		<column name="title" type="String" />
+		<column name="status" type="int" />
+
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<order by="asc">
+			<order-column name="taskId" />
+		</order>
+
+		<finder name="TaskId" return-type="Collection">
+			<finder-column name="taskId" />
+		</finder>
 	</entity>
 </service-builder>
