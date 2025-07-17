@@ -37,8 +37,10 @@ public class SubtaskLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.rebeca.todolist.entity.service.impl.SubtaskLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
-	public static Subtask addSubTask(String title) throws PortalException {
-		return getService().addSubTask(title);
+	public static Subtask addSubTask(String title, long taskId)
+		throws PortalException {
+
+		return getService().addSubTask(title, taskId);
 	}
 
 	/**
@@ -53,6 +55,10 @@ public class SubtaskLocalServiceUtil {
 	 */
 	public static Subtask addSubtask(Subtask subtask) {
 		return getService().addSubtask(subtask);
+	}
+
+	public static Subtask changeSubStatus(long taskId) throws PortalException {
+		return getService().changeSubStatus(taskId);
 	}
 
 	/**

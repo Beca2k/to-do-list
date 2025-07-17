@@ -20,6 +20,7 @@ import com.rebeca.todolist.entity.service.base.SubtaskLocalServiceBaseImpl;
 import com.rebeca.todolist.entity.service.constant.TaskStatus;
 import org.osgi.service.component.annotations.Component;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,13 +32,31 @@ import java.util.List;
 )
 public class SubtaskLocalServiceImpl extends SubtaskLocalServiceBaseImpl {
 
-	public Subtask addSubTask(String title) throws PortalException, PortalException {
+	public Subtask addSubTask(String title, long taskId) throws PortalException, PortalException {
 
 		long subTaskId = counterLocalService.increment(Subtask.class.getName());
 
 		Subtask subtask = createSubtask(subTaskId);
 		subtask.setTitle(title);
+		subtask.setTaskId(taskId);
 		subtask.setStatus(TaskStatus.PENDENTE.getCode());
+
+		subtask = updateSubtask(subtask);
+		return subtask;
+	}
+
+	public Subtask changeSubStatus(long taskId) throws PortalException {
+
+		Subtask subtask = getSubtask(taskId);
+
+		if (subtask == null) {//TODO tratamento de exceção
+			return null;
+		}
+
+		subtask.setStatus(TaskStatus.CONCLUIDO.getCode());
+		subtask.setModifiedDate(new Date());
+
+		subtask = updateSubtask(subtask);
 
 		return subtask;
 	}

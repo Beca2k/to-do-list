@@ -50,38 +50,19 @@ private TaskLocalService _taskLocalService;
 @Reference
 private SubtaskLocalService _subtaskLocalService;
 
-
 @Override
  public boolean processAction(ActionRequest actionRequest, ActionResponse actionResponse) throws PortletException {
 
     long taskId = ParamUtil.getLong(actionRequest, "taskId");
     String titleTask = ParamUtil.getString(actionRequest, "title");
 
-    Subtask subtask = _subtaskLocalService.createSubtask(CounterLocalServiceUtil.increment());
-    subtask.setTaskId(taskId);
-    subtask.setTitle(titleTask);
-
-    _subtaskLocalService.addSubtask(subtask);
+    try {
+        Subtask subtask = _subtaskLocalService.addSubTask(titleTask, taskId);
+        actionResponse.setRenderParameter("mvcRenderCommandName", "/task_frm_edit");
+        actionResponse.setRenderParameter("taskId", subtask.getTaskId() + "");
+    } catch (PortalException e) {
+        throw new RuntimeException(e);
+    }
     return true;
 }
-
-    private long getFolderId(long groupId, String folderName, long userId, ActionRequest actionRequest) throws PortalException, PortalException {
-
-        DLFolder dlFolder = null;
-        ServiceContext dlServiceCtx = ServiceContextFactory.getInstance(DLFolder.class.getName(), actionRequest);
-
-        try {
-            dlFolder = DLFolderLocalServiceUtil.getFolder(groupId, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, folderName);
-        } catch (Exception e) {
-            dlFolder = DLFolderLocalServiceUtil.addFolder(null, userId, groupId, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, false, DLFolderConstants.DEFAULT_PARENT_FOLDER_ID, folderName, folderName, false, dlServiceCtx);
-        }
-        return dlFolder.getFolderId();
-    }
-    private ServiceContext getFileServiceContext(ActionRequest actionRequest) throws PortalException {
-
-        ServiceContext serviceContext = ServiceContextFactory.getInstance(FileEntry.class.getName(), actionRequest);
-        serviceContext.setAddGroupPermissions(true);
-        serviceContext.setAddGuestPermissions(true);
-        return serviceContext;
-    }
 }

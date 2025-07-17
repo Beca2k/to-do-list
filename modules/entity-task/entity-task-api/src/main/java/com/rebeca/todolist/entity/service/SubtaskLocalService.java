@@ -55,7 +55,7 @@ public interface SubtaskLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.rebeca.todolist.entity.service.impl.SubtaskLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the subtask local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link SubtaskLocalServiceUtil} if injection and service tracking are not available.
 	 */
-	public Subtask addSubTask(String title) throws PortalException;
+	public Subtask addSubTask(String title, long taskId) throws PortalException;
 
 	/**
 	 * Adds the subtask to the database. Also notifies the appropriate model listeners.
@@ -69,6 +69,8 @@ public interface SubtaskLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Subtask addSubtask(Subtask subtask);
+
+	public Subtask changeSubStatus(long taskId) throws PortalException;
 
 	/**
 	 * @throws PortalException

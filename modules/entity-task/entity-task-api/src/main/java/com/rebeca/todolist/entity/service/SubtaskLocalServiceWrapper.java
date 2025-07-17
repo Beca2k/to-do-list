@@ -27,10 +27,11 @@ public class SubtaskLocalServiceWrapper
 	}
 
 	@Override
-	public com.rebeca.todolist.entity.model.Subtask addSubTask(String title)
+	public com.rebeca.todolist.entity.model.Subtask addSubTask(
+			String title, long taskId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _subtaskLocalService.addSubTask(title);
+		return _subtaskLocalService.addSubTask(title, taskId);
 	}
 
 	/**
@@ -48,6 +49,13 @@ public class SubtaskLocalServiceWrapper
 		com.rebeca.todolist.entity.model.Subtask subtask) {
 
 		return _subtaskLocalService.addSubtask(subtask);
+	}
+
+	@Override
+	public com.rebeca.todolist.entity.model.Subtask changeSubStatus(long taskId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _subtaskLocalService.changeSubStatus(taskId);
 	}
 
 	/**

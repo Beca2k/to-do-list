@@ -6,15 +6,67 @@
 
 <div class="container mt-4">
 
+    <liferay-portlet:actionURL  name="/subtask/create" var="subTaskCreateURL" >
+        <liferay-portlet:param name="taskId" value="${task.taskId}" />
+    </liferay-portlet:actionURL>
+
     <aui:form action="${subTaskCreateURL}" method="post">
         <div class="mb-3">
             <label class="form-label">Subtarefas</label>
             <div id="subtask-container">
-                <input type="text" name="title" class="form-control mb-2" placeholder="Subtarefa" />
+                <aui:input type="text" name="title" label="" cssClass="form-control mb-2" placeholder="Subtarefa" />
             </div>
             <aui:button type="submit" class="btn btn-secondary btn-sm" value="Adicionar Subtarefa" />
         </div>
     </aui:form>
+
+    <div class="table-responsive rounded shadow-sm">
+                    <table class="table table-bordered table-hover align-middle bg-white">
+                        <thead class="table-light text-center">
+                            <tr>
+                                <th>Título</th>
+                                <th>Status</th>
+                                <th style="width: 22%;">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <c:forEach var="task" items="${subtasks}">
+                                <tr class="${task.status == 1 ? 'table-success' : ''}">
+
+                                    <td><strong>${task.title}</strong></td>
+
+                                    <td class="text-center">
+                                        <c:choose>
+                                            <c:when test="${task.status == 1}">
+                                                <span class="badge bg-success">Concluída</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="badge bg-warning text-dark">Pendente</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+
+                                    <td class="text-center">
+                                        <form action="<portlet:actionURL name='/subtask/change' />" method="post" class="d-inline">
+                                            <input type="hidden" name="<portlet:namespace />taskId" value="${task.subtaskId}" />
+                                            <button class="btn btn-outline-success btn-sm me-1" title="Concluir" onclick="return confirm('Tem certeza que deseja concluir esta sub tarefa?');">
+                                                ✔
+                                            </button>
+                                        </form>
+
+                                        <form action="<portlet:actionURL name='/subtask/delete' />" method="post" class="d-inline">
+                                            <input type="hidden" name="<portlet:namespace />taskId" value="${task.subtaskId}" />
+                                            <button class="btn btn-outline-danger btn-sm" title="Excluir" onclick="return confirm('Tem certeza que deseja excluir esta sub tarefa?');">
+                                                ✖
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
 
     <aui:form action="${updateTaskURL}" method="post">
 
@@ -37,8 +89,4 @@
         <a href="${cancelURL}" class="btn btn-outline-danger">Cancelar</a>
     
     </aui:form>
-
-    <liferay-portlet:actionURL  name="/subtask/create" var="subTaskCreateURL" >
-        <liferay-portlet:param name="taskId" value="${task.taskId}" />
-   </liferay-portlet:actionURL>
 </div>
